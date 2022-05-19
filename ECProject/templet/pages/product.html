@@ -8,8 +8,8 @@
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" />
-	<meta name="keywords" content="Electro Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"
-	/>
+	<meta name="keywords"
+		content="Electro Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 	<script>
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -35,9 +35,12 @@
 	<!-- //Custom-Files -->
 
 	<!-- web fonts -->
-	<link href="{% static '//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext' %}" rel="stylesheet">
-	<link href="{% static '//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese' %}"
-	    rel="stylesheet">
+	<link
+		href="{% static '//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext' %}"
+		rel="stylesheet">
+	<link
+		href="{% static '//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese' %}"
+		rel="stylesheet">
 	<!-- //web fonts -->
 
 </head>
@@ -48,27 +51,27 @@
 	</div>
 	<!-- //banner-2 -->
 	<!-- page -->
+
 	<div class="services-breadcrumb">
 		<div class="agile_inner_breadcrumb">
 			<div class="container">
 				<ul class="w3_short">
 					<li>
-						<a href="/">Home</a>
-						<i>|</i>
+						<a href="/">
+							<h4>Home</h4>
+						</a>
 					</li>
-					<li>{{myproduct.name}}</li>
 				</ul>
 			</div>
 		</div>
 	</div>
-	<!-- //page -->
-	
-	<!-- Single Page -->
+
+	{% for p in allproducts %}
 	<div class="banner-bootom-w3-agileits py-5">
 		<div class="container py-xl-4 py-lg-2">
 			<!-- tittle heading -->
 			<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
-				{{myproduct.name}}</h3>
+				{{p.name}}</h3>
 			<!-- //tittle heading -->
 			<div class="row">
 				<div class="col-lg-5 col-md-8 single-right-left ">
@@ -77,7 +80,9 @@
 							<ul class="slides">
 								<li data-thumb="images/si1.jpg">
 									<div class="thumb-image">
-										<img src="{{myproduct.image.url}}" width="350" height="360" data-imagezoom="true" class="img-fluid" alt=""> </div>
+										<img src="{{p.image.url}}" width="350" height="360" data-imagezoom="true"
+											class="img-fluid" alt="">
+									</div>
 								</li>
 							</ul>
 							<div class="clearfix"></div>
@@ -87,33 +92,32 @@
 
 				<div class="col-lg-7 single-right-left simpleCart_shelfItem">
 					<p class="mb-3">
-						<span class="item_price"> <b>{{myproduct.price}}</b></span>
-						<label>Free delivery</label>
+						<span class="item_price"> <b>${{p.price}}</b></span>
+						<label><b>Free Delivery</b></label>
 					</p>
 					<ul>
 						<li class="mb-1">
-							<b>{{myproduct.description}}</b>
+							<h3>{{p.description}}</h3>
 						</li>
 					</ul>
 
-				</br>
+					</br>
 
 					<div class="occasion-cart">
 						<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-							<form action="#" method="post">
-								<fieldset>
-									<input type="hidden" name="cmd" value="_cart" />
-									<input type="hidden" name="add" value="1" />
-									<input type="hidden" name="business" value=" " />
-									<input type="hidden" name="item_name" value="Samsung Galaxy J7 Prime" />
-									<input type="hidden" name="amount" value="200.00" />
-									<input type="hidden" name="discount_amount" value="1.00" />
-									<input type="hidden" name="currency_code" value="USD" />
-									<input type="hidden" name="return" value=" " />
-									<input type="hidden" name="cancel_return" value=" " />
-									<input type="submit" name="submit" value="Add to cart" class="button" />
-								</fieldset>
+
+							<form action="#" method="get">
+								<input hidden type="text" name="product" value="{{myproduct.id}}">
+								<h5 selected style="color: rgb(165, 7, 7);"><b>Quantity</b></h5>
+								</br>
+								<input class="input-number" type="text" value="1" min="1" max="10">
+								</br>
+								<br>
+								<a href="/add/{{p.id}}" class="button btn">
+									<h4>Add To Cart</h4>
+								</a>
 							</form>
+							{% endfor %}
 						</div>
 					</div>
 				</div>
@@ -172,7 +176,7 @@
 	<!-- //popup modal (for location)-->
 
 	<!-- cart-js -->
-	<script src="{% static 'js/minicart.js' %}"></script>
+	<!-- <script src="{% static 'js/minicart.js' %}"></script>
 	<script>
 		paypals.minicarts.render(); //use only unique class names other than paypals.minicarts.Also Replace same class name in css and minicart.min.js
 
@@ -192,7 +196,7 @@
 				evt.preventDefault();
 			}
 		});
-	</script>
+	</script> -->
 	<!-- //cart-js -->
 
 	<!-- password-script -->
@@ -262,4 +266,5 @@
 	<!-- //for bootstrap working -->
 	<!-- //js-files -->
 </body>
+
 </html>
